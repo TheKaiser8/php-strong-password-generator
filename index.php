@@ -18,26 +18,6 @@
 // Gestire ulteriori parametri per la password: quali caratteri usare fra numeri, lettere e simboli. Possono essere scelti singolarmente (es. solo numeri) oppure possono essere combinati fra loro (es. numeri e simboli, oppure tutti e tre insieme).
 // Dare all’utente anche la possibilità di permettere o meno la ripetizione di caratteri uguali.
 
-// $alphabet = [ array_merge(range('A', 'Z'), range('a', 'z')) ];
-
-// foreach( $alphabet as $letters) {
-//     echo $letters . ", ";
-// }
-// var_dump($letters);
-
-// $numbers = [ range('0', '9') ];
-
-// foreach( $numbers as $numbers) {
-//     echo $numbers . ", ";
-// }
-// var_dump($numbers);
-
-// $special_character = ['!','@','#','$','%','&','*','_','+','=','/','-','','<','>','?',];
-// var_dump($special_character);
-
-// $all_characters = [ array_merge($alphabet, $numbers, $special_character) ];
-// var_dump($all_character);
-
 if( !empty($_GET['length']) ) {
     $pw_length = $_GET['length'];
 }
@@ -80,8 +60,13 @@ $generated_pw = passwordGenerate($pw_length);
                 <button type="submit" class="btn btn-primary">Invia</button>
             </div>
         </form>
+        <!-- Campo output con controllo: password generata o messaggio informativo -->
+        <?php if( !empty($generated_pw) ) { ?>
         <h3><?php echo "La password generata è: $generated_pw" ?></h3>
-
+        <?php } else { ?>
+        <h3><?php echo "Nessun parametro valido inserito" ?></h3>
+        <?php } ?>
+        <!-- /Campo output con controllo: password generata o messaggio informativo -->
     </div>
 
     <!-- Bootstrap JS -->
