@@ -1,4 +1,5 @@
 <?php 
+include "functions.php";
 
 // Descrizione
 // Dobbiamo creare una pagina che permetta ai nostri utenti di utilizzare il nostro generatore di password (abbastanza) sicure.
@@ -20,17 +21,9 @@
 
 if( !empty($_GET['length']) ) {
     $pw_length = $_GET['length'];
-}
-
-function passwordGenerate($number) {
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+=-}{[}]\|;:<>?/';
-        $charactersLength = strlen($characters);
-        $password = '';
-        for ($i = 0; $i < $number; $i++) {
-            $password .= $characters[rand(0, $charactersLength - 1)];
-        }
-        return $password;
-}
+} else {
+    $pw_length = '';
+};
 
 $generated_pw = passwordGenerate($pw_length);
 
