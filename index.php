@@ -1,4 +1,6 @@
 <?php 
+session_start();
+
 include "functions.php";
 
 // Descrizione
@@ -25,7 +27,7 @@ if( !empty($_GET['length']) ) {
     $pw_length = '';
 };
 
-$generated_pw = passwordGenerate($pw_length);
+$_SESSION['$generated_pw'] = passwordGenerate($pw_length);
 
 ?>
 
@@ -53,13 +55,7 @@ $generated_pw = passwordGenerate($pw_length);
                 <button type="submit" class="btn btn-primary">Invia</button>
             </div>
         </form>
-        <!-- Campo output con controllo: password generata o messaggio informativo -->
-        <?php if( !empty($generated_pw) ) { ?>
-        <h3><?php echo "La password generata è: $generated_pw" ?></h3>
-        <?php } else { ?>
-        <h3><?php echo "Nessun parametro valido inserito" ?></h3>
-        <?php } ?>
-        <!-- /Campo output con controllo: password generata o messaggio informativo -->
+        <?php include_once "password.php" ?>
     </div>
 
     <!-- Bootstrap JS -->
