@@ -53,6 +53,7 @@ $_SESSION['$generated_pw'] = passwordGenerate($pw_length);
             </div>
             <div class="mb-3">
                 <button type="submit" class="btn btn-primary">Invia</button>
+                <button type="reset" class="btn btn-secondary">Annulla</button>
             </div>
         </form>
         <?php include_once "password.php" ?>
