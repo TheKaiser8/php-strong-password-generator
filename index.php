@@ -23,18 +23,25 @@ $alphabet = [ array_merge(range('A', 'Z'), range('a', 'z')) ];
 foreach( $alphabet as $letters) {
     echo $letters . ", ";
 }
+var_dump($letters);
 
 $numbers = [ range('0', '9') ];
 
 foreach( $numbers as $numbers) {
     echo $numbers . ", ";
 }
+var_dump($numbers);
 
 $special_character = ['!','@','#','$','%','&','*','_','+','=','/','-','','<','>','?',];
-
-var_dump($letters);
-var_dump($numbers);
 var_dump($special_character);
+
+$all_characters = [ array_merge($alphabet, $numbers, $special_character) ];
+var_dump($all_character);
+
+if( !empty($_GET['length']) ) {
+    $pw_length = $_GET['length'];
+}
+var_dump($pw_length);
 
 ?>
 
@@ -56,10 +63,10 @@ var_dump($special_character);
         <form action="index.php" method="GET">
             <div class="mb-3">
                 <label for="password-length">Lunghezza della password</label>
-                <input type="number" name="pw_length" id="password-length" minlength="8" maxlength="24" required>
+                <input type="number" name="length" id="password-length" min="8" max="24" required>
             </div>
             <div class="mb-3">
-                <button class="btn btn-primary">Invia</button>
+                <button type="submit" class="btn btn-primary">Invia</button>
             </div>
         </form>
     </div>
