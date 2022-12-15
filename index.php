@@ -18,30 +18,41 @@
 // Gestire ulteriori parametri per la password: quali caratteri usare fra numeri, lettere e simboli. Possono essere scelti singolarmente (es. solo numeri) oppure possono essere combinati fra loro (es. numeri e simboli, oppure tutti e tre insieme).
 // Dare all’utente anche la possibilità di permettere o meno la ripetizione di caratteri uguali.
 
-$alphabet = [ array_merge(range('A', 'Z'), range('a', 'z')) ];
+// $alphabet = [ array_merge(range('A', 'Z'), range('a', 'z')) ];
 
-foreach( $alphabet as $letters) {
-    echo $letters . ", ";
-}
-var_dump($letters);
+// foreach( $alphabet as $letters) {
+//     echo $letters . ", ";
+// }
+// var_dump($letters);
 
-$numbers = [ range('0', '9') ];
+// $numbers = [ range('0', '9') ];
 
-foreach( $numbers as $numbers) {
-    echo $numbers . ", ";
-}
-var_dump($numbers);
+// foreach( $numbers as $numbers) {
+//     echo $numbers . ", ";
+// }
+// var_dump($numbers);
 
-$special_character = ['!','@','#','$','%','&','*','_','+','=','/','-','','<','>','?',];
-var_dump($special_character);
+// $special_character = ['!','@','#','$','%','&','*','_','+','=','/','-','','<','>','?',];
+// var_dump($special_character);
 
-$all_characters = [ array_merge($alphabet, $numbers, $special_character) ];
-var_dump($all_character);
+// $all_characters = [ array_merge($alphabet, $numbers, $special_character) ];
+// var_dump($all_character);
 
 if( !empty($_GET['length']) ) {
     $pw_length = $_GET['length'];
 }
-var_dump($pw_length);
+
+function passwordGenerate($number) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+=-}{[}]\|;:<>?/';
+        $charactersLength = strlen($characters);
+        $password = '';
+        for ($i = 0; $i < $number; $i++) {
+            $password .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $password;
+}
+
+$generated_pw = passwordGenerate($pw_length);
 
 ?>
 
@@ -69,6 +80,8 @@ var_dump($pw_length);
                 <button type="submit" class="btn btn-primary">Invia</button>
             </div>
         </form>
+        <h3><?php echo "La password generata è: $generated_pw" ?></h3>
+
     </div>
 
     <!-- Bootstrap JS -->
